@@ -1,31 +1,28 @@
 .model small
 .stack 100h
 .data
-a db 'lab task $'
+    a db 'lab task $'
 .code
 
 main proc
+    ; Initialize the data segment
     mov ax, @data
-    mov ah ,ax
+    mov ds, ax
     
-    mov ah , 09h
-    lea dx , a
-    
-    mov ax , c
-    mov dl,10
-    int 21h
-    
-    mov dl,13
-    int 21h 
-    
-    mov cx ,b
-    mov ah ,2
-    mov dl,4
-    
-    
-    exit:
-    mov ax,4ch
-    int 21h
-    main endp
-end main
+    ; Print the string
+    mov ah, 09h          ; Function to print string
+    lea dx, a            ; Load the address of the string
+    int 21h              ; Call DOS interrupt
 
+    ; Print a new line (CR + LF)
+    mov dl, 13           ; Carriage return
+    mov ah, 02h          ; Function to write character
+    int 21h              ; Call DOS interrupt
+    mov dl, 10           ; Line feed
+    int 21h              ; Call DOS interrupt
+    
+    ; Exit the program
+    mov ax, 4C00h        ; Function to terminate program
+    int 21h              ; Call DOS interrupt
+main endp
+end main
