@@ -16,7 +16,12 @@ main proc
     int 21h
     
     mov dl,13
-    int 21h
+    int 21h 
+    
+    mov cx ,b
+    mov ah ,2
+    mov dl,4
+    
     
     exit:
     mov ax,4ch
