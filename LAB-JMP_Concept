@@ -1,0 +1,42 @@
+Lab class Jump concept 
+.model small
+.stack 100h
+.data
+
+a db 'jmp Implementation $'
+b db "Assembly language $'
+c db 'coding $'
+.code
+
+main proc 
+move ax,@data
+mov ds , ax
+mov ah,9
+
+lea dx,a
+int 21h
+mov ah,2
+movdl,10
+int 21h
+movdl,13
+int 21h 
+
+
+m: ilevel
+mov ah,9
+lea dx,b
+int 21h 
+jmp n
+
+
+n:
+mov ah,9
+lea dx,eint 21h 
+jmp exit
+
+
+exit:
+mov ah,4ch
+int 21h
+main endp
+end main
