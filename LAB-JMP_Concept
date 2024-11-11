@@ -22,7 +22,8 @@ movdl,13
 int 21h 
 
 
-m: ilevel
+m:
+          ;ilevel
 mov ah,9
 lea dx,b
 int 21h 
