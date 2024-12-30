@@ -1,30 +1,29 @@
+# ID= AB-CDEFG-H=19-40128-1
+.MODEL      SMALL
+.STACK      300H
+.DATA
 
-; You may customize this and other start-up templates; 
-; The location of this template is c:\emu8086\inc\0_com_template.txt
+WORD1 DW 20
+MSG DB 'i want to be a good human!'
 
-org 100h
 
-.model small
-.stack 100h
-.data
-.code
 main proc
-mov ah,1
-int 21h
-mov dl,al
-mov ah,2
-int 21h
-
-mov ah,4ch
-int 21h
+MOV AX, 1940h 
+MOV BX, 1281h
+XCHG AH, AL 
+XCHG BH, BL
+ADD AL, 19h
+ADD BH, 15h 
+SUB AX, BX
+INC AX
+DEC BX
+NEG AX
+NEG BX
+MOV  DX,WORD1
+LEA  DX,MSG
 main endp
-end main     
-
-
-
-
-ret
-
-
-
-
+END main
+              
+              
+              
+    
